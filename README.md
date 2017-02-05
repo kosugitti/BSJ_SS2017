@@ -29,12 +29,15 @@ R，RStudio，rstanパッケージのインストールの方法が書いてあ�
 
 + rstanパッケージ
 + MASSパッケージ
-+ 
++ tidyrパッケージ
 
 ## 第一講　環境の準備
 
-+ [Rの基本的な操作法](Lesson1.R)
-+ 外部ファイルのサンプルデータは[baseball2016.csv](baseball2016.csv)です
++ [Rの基本的な操作法(前半)](Lesson1.R)
++ 外部ファイルのサンプルデータは[baseball2016.csv](baseball2016.csv)です。
++ 練習問題1の解答例は[Exercise1.R](Exercise1.R)です。
++ [Rの基本的な操作法(インターミッション)](InterMission.R)
++ [Rの基本的な操作法(後半)](Lesson2.R)
 
 ## 第二講　考え方の準備
 
