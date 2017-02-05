@@ -60,3 +60,77 @@ quantile(x100000,probs=c(0,0.25,0.33,0.75,1))
 qnorm(0.25,0,1)
 qnorm(0.33,0,1)
 qnorm(0.75,0,1)
+
+################
+# 図にするとわかりやすい
+hist(x100)
+hist(x1000)
+hist(x10000)
+hist(x100000)
+
+# plot 関数
+x <- 1:10
+y <- 1:10
+plot(x,y)
+plot(x,y,xlim=c(-10,10),ylim=c(-10,10))
+plot(x,y,main="Title",xlab="X axis",ylab="Y axis")
+
+# もう一度野球のデータを例にしましょう
+baseball2016 <- read.csv("baseball2016.csv",
+                         fileEncoding="UTF8",
+                         na.strings="*")
+
+# ggplot2パッケージが超おすすめ
+library(ggplot2)
+g <- ggplot(baseball2016,aes(x=height,y=weight))
+g <- g + geom_point()
+g
+
+# 文字化けするMacユーザは次の呪文を唱えてから実行すると良い
+#　　参考 >　奥村研究室　https://oku.edu.mie-u.ac.jp/~okumura/stat/ggplot2.html 
+old = theme_set(theme_gray(base_family="HiraKakuProN-W3"))
+
+# 色分け情報追加
+g <- ggplot(baseball2016,aes(x=height,y=weight,color=team))
+g <- g + geom_point()
+g
+
+# かき分け情報追加
+g <- g + facet_wrap(~position)
+g
+
+# 色分けとかき分け
+g <- ggplot(baseball2016,aes(x=HR,y=pay,color=position))
+g <- g + geom_point()
+g <- g + facet_wrap(~team)
+g
+
+
+
+# ヒストグラム（y軸情報はない)
+g <- ggplot(baseball2016,aes(x=pay)) + geom_histogram(binwidth = 500)
+g
+
+# グループごとのヒストグラム
+g <- ggplot(baseball2016,aes(x=pay,fill=team))
+g <- g + geom_histogram(binwidth=500)
+g <- g + facet_wrap(~team)
+g
+
+# 密度にする
+g <- ggplot(baseball2016,aes(x=pay,y=..density..,fill=team))
+g <- g + geom_histogram(binwidth=500,alpha=0.5,position="identity")
+g <- g + geom_density(alpha=0.5)
+g <- g + facet_wrap(~team)
+g
+
+
+# 横軸がカテゴリカル
+g <- ggplot(baseball2016,aes(x=team,y=pay,fill=team))
+g <- g + geom_boxplot()
+g
+
+# バイオリンプロット(分布がイメージしやすい)
+g <- ggplot(baseball2016,aes(x=team,y=pay,fill=team))
+g <- g + geom_violin()
+g
