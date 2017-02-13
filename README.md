@@ -46,8 +46,11 @@ R，RStudio，rstanパッケージのインストールの方法が書いてあ�
 + 練習問題2の解答例は[Exercise2.R](Exercise2.R)です。
 
 ## 第二講　考え方の準備
+## 第三講　Stan入門
 
-## 第三講　ベイジアンモデリングの実際
++ 公式サンプル(8schools)のファイルは[8shcool.stan](8school.stan)です。
++ 公式サンプルを呼び出して使うRコードは[Lesson3.R](Lesson3.R)です。
+
 
 ## 第四講　ベイジアンモデラーへの道
 
