@@ -31,6 +31,7 @@ R，RStudio，rstanパッケージのインストールの方法が書いてあ�
 + tidyrパッケージ
 + ggplot2パッケージ
 + MASSパッケージ
++ looパッケージ
 
 発展的な利用のために，次のパッケージがあると便利です
 + psychパッケージ
@@ -51,8 +52,13 @@ R，RStudio，rstanパッケージのインストールの方法が書いてあ�
 + 公式サンプル(8schools)のファイルは[8shcool.stan](8school.stan)です。
 + 公式サンプルを呼び出して使うRコードは[Lesson3.R](Lesson3.R)です。
 
-
 ## 第四講　ベイジアンモデラーへの道
+
++ 第四講　Rのソースコードは[Lesson4.R](Lesson4.R)です。
++ モデルコード 一つの正規分布[model1.stan](model1.stan)
++ モデルコード 事前分布を置いた[model2.stan](model2.stan)
++ モデルコード 事後予測分布を描く[model3.stan](model3.stan)
++ モデルコード 対数尤度を算出[model3b.stan](model3b.stan)
 
 ## 第五講　より発展的なモデリング
 

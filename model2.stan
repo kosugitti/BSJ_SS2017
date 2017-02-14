@@ -11,4 +11,7 @@ model{
   for(i in 1:N){
     Y[i] ~ normal(mu,sig);
   }
+  // Prior
+  mu ~ normal(180,20);
 }
+
