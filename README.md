@@ -59,6 +59,13 @@ R，RStudio，rstanパッケージのインストールの方法が書いてあ�
 + モデルコード 事前分布を置いた[model2.stan](model2.stan)
 + モデルコード 事後予測分布を描く[model3.stan](model3.stan)
 + モデルコード 対数尤度を算出[model3b.stan](model3b.stan)
++ モデルコード 二群の平均値を推定[model4.stan](model4.stan)
++ モデルコード アンバランスで等分散な二群[model4b.stan](model4b.stan)
++ モデルコード アンバランスで等分散でない二群[model4c.stan](model3c.stan)
++ モデルコード さまざまな生成量[model4d.stan](model4d.stan)
+
++ 参考論文；[岡田謙介(2014)ベイズ統計による情報仮説の評価は分散分析にとって代わるのか?,基礎心理学研究，32(2),223-231](http://www3.psy.senshu-u.ac.jp/~ken/JJPS2014.pdf)
++ 参考文献；[お菓子の力を推定してみました](http://qiita.com/painomi2/items/8827611c344258b715c7)
 
 ## 第五講　より発展的なモデリング
 
