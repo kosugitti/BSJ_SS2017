@@ -74,6 +74,9 @@ R，RStudio，rstanパッケージのインストールの方法が書いてあ�
 + モデルコード 分散分析モデル[model6.stan](model6.stan)
 + モデルコード 分散分析モデルの別解[model6b.stan](model6b.stan)
 + 参考文献；[球面性仮定の出力](http://riseki.php.xdomain.jp/index.php?ANOVA君%2F球面性検定の出力)
++ 参考文献；[分散分析ノート](http://ofmind.net/doc/anova-note)
+
+
 
 
 
