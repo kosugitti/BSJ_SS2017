@@ -67,5 +67,13 @@ R，RStudio，rstanパッケージのインストールの方法が書いてあ�
 + 参考論文；[岡田謙介(2014)ベイズ統計による情報仮説の評価は分散分析にとって代わるのか?,基礎心理学研究，32(2),223-231](http://www3.psy.senshu-u.ac.jp/~ken/JJPS2014.pdf)
 + 参考文献；[お菓子の力を推定してみました](http://qiita.com/painomi2/items/8827611c344258b715c7)
 
-## 第五講　より発展的なモデリング
+## 第五講　ベイジアンモデラーへの道
+
++ 第五講　Rのソースコードは[Lesson5.R](Lesson5.R)です。
++ モデルコード 対応のある2群の場合[model5.stan](model5.stan)
++ モデルコード 分散分析モデル[model6.stan](model6.stan)
++ モデルコード 分散分析モデルの別解[model6b.stan](model6b.stan)
++ 参考文献；[球面性仮定の出力](http://riseki.php.xdomain.jp/index.php?ANOVA君%2F球面性検定の出力)
+
+
 

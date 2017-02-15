@@ -2,87 +2,67 @@
 #
 # 行動計量学会第19回春の合宿セミナー
 #　　サンプルスクリプト
-#      Lesson 4 ベイジアンモデリングの実際
+#      Lesson 5 ベイジアンモデラーへの道
 #
 #　　(c) Koij Kosugi(@kosugitti)
 #
 #########################################
-
-# ひとつのデータの例
 set.seed(12345)
+# 多変量正規分布をつかって対応のある2群を考える
+# 乱数に使う基本的な設定
+library(MASS)
+mu <- c(10,20)
+sig1 <- 5
+sig2 <- 5
+rho <- 0.3
+Sigmatrix <- matrix(nrow=2,ncol=2)
+Sigmatrix[1,1] <- sig1^2
+Sigmatrix[2,2] <- sig2^2
+Sigmatrix[1,2] <- sig1 * sig2 * rho
+Sigmatrix[2,1] <- sig1 * sig2 * rho
+# 乱数を生成
 N <- 100
-mu <- 170
-sig <- 10
-Y <- rnorm(N,mu,sig)
-mean(Y)
-sd(Y)
-
+X <- mvrnorm(N,mu,Sigmatrix,empirical = TRUE)
+cor(X)
+# Stanで推定
 library(rstan)
 rstan_options(auto_write = TRUE)
 options(mc.cores = parallel::detectCores())
-model1 <-  stan_model("model1.stan",model_name="single Norm")
-datastan <- list(N=N,Y=Y)
-fit1 <- sampling(model1,data=datastan,iter=3000,warmup=1000,chains=2)
-print(fit1)
-stan_hist(fit1,pars="mu",bins=50)
-stan_hist(fit1,pars="sig")
+datastan <- list(N=N,X=X)
+model5 <- stan_model("model5.stan",model_name="paired T")
+fit <- sampling(model5,datastan)
+fit
 
-# データを増やしてみる
-N <- 1000
-mu <- 170
-sig <- 10
-Y <- rnorm(N,mu,sig)
-mean(Y)
-sd(Y)
-datastan <- list(N=N,Y=Y)
-fit1.2 <- sampling(model1,data=datastan,iter=3000,warmup=1000,chains=2)
-print(fit1.2)
-
-# 実際のデータでやってみる
-baseball <- read.csv("baseball2016.csv",fileEncoding = "utf-8")
-datastan <- list(N=nrow(baseball),Y=baseball$height)
-fit1.3 <- sampling(model1,data=datastan)
-print(fit1.3)
-
-
-# 事前分布の指定
-datastan <- list(N=nrow(baseball),Y=baseball$height)
-model2 <-  stan_model("model2.stan",model_name="single Norm with Prior")
-fit2 <- sampling(model2,data=datastan)
-print(fit2)
-
-# 事後予測分布の生成
-datastan <- list(N=nrow(baseball),Y=baseball$height)
-model3 <-  stan_model("model3.stan",model_name="single Norm and PPD")
-fit3 <- sampling(model3,data=datastan)
-# モデルから生成されたデータを抜き出す
-predY <- extract(fit3,pars="predY")$predY
-
-# 描画
-library(ggplot2)
-# 実データと抜きだした生成データを結合
-value <-  c(baseball$height,predY)
-# 実データと生成データを区別する変数を作る
-ID <- c(rep(1,length(baseball$height)),rep(2,length(predY)))
-# あわせてデータフレームに
-plotData <- data.frame(cbind(ID,value))
-# 識別変数をfactor型に
-plotData$ID <- factor(plotData$ID,labels=c("observed","predicted"))
-# plot
-g <- ggplot(data=plotData,aes(x=value,group=ID,fill=ID))
-g <- g + geom_density(alpha=0.5,position="identity")
-g
+# 間(2)間(2)のANOVA
+N <- 10
+mu <- 50
+effectA <- 5
+effectB <- 8
+effectAB <- 0
+error <- 3
+a1b1 <- mu + effectA + effectB + effectAB
+a1b2 <- mu + effectA - effectB - effectAB
+a2b1 <- mu - effectA + effectB - effectAB
+a2b2 <- mu - effectA - effectB + effectAB
+dataA1B1 <- rnorm(N,a1b1,error)
+dataA1B2 <- rnorm(N,a1b2,error)
+dataA2B1 <- rnorm(N,a2b1,error)
+dataA2B2 <- rnorm(N,a2b2,error)
+# anovaで確かめてみる
+value <- c(dataA1B1,dataA1B2,dataA2B1,dataA2B2)
+designA <- c(rep(0,N),rep(0,N),rep(1,N),rep(1,N))
+designB <- c(rep(0,N),rep(1,N),rep(0,N),rep(1,N))
+dataset <- data.frame(designA,designB,value)
+summary(aov(value~designA*designB,data=dataset))
+# Bayesian Modeling
+model6 <- stan_model("model6.stan",model_name="Between ANOVA")
+datastan <- list(N=N,A1B1=dataA1B1,A1B2=dataA1B2,A2B1=dataA2B1,A2B2=dataA2B2)
+fit6 <- sampling(model6,datastan)
+fit6
 
 
-# WAICの計算
-datastan <- list(N=nrow(baseball),Y=baseball$height)
-model3b <-  stan_model("model3b.stan",model_name="single Norm and PPD/Log_lik")
-fit3 <- sampling(model3b,data=datastan)
-# モデルから生成されたデータを抜き出す
-logLik <- extract(fit3,pars="log_lik")$log_lik
-# looパッケージで計算してもらう
-library(loo)
-waic(logLik)
-loo(logLik)
+model6b <- stan_model("model6b.stan",model_name="Between ANOVA 2")
+fit6b <- sampling(model6b,datastan)
+fit6b
 
 
