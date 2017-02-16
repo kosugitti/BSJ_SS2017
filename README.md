@@ -75,7 +75,12 @@ R，RStudio，rstanパッケージのインストールの方法が書いてあ�
 + モデルコード 分散分析モデルの別解[model6b.stan](model6b.stan)
 + 参考文献；[球面性仮定の出力](http://riseki.php.xdomain.jp/index.php?ANOVA君%2F球面性検定の出力)
 + 参考文献；[分散分析ノート](http://ofmind.net/doc/anova-note)
++ モデルコード パイの実分析[model7.stan](model7.stan)
++ モデルコード パイの実回帰分析部分[model7b.stan](model7.stan)
 
+## 第六講　より発展的なモデリング
+
++ 第六講　Rのソースコードは[Lesson6.R](Lesson6.R)です。
 
 
 

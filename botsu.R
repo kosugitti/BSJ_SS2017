@@ -53,3 +53,9 @@ print(fit3_all)
 print(fit3_pre)
 print(fit3_post_null)
 print(fit3_post)
+
+# クレペリンデータの整理
+dat <- read.csv("Kraepelin.csv",fileEncoding = "UTF-8")
+delVal <- c("ID","group","pai",paste0("tr",1:30))
+dat2 <- subset(dat,select=delVal)
+write.csv(dat2,"Kraepelin3.csv",row.names = F)

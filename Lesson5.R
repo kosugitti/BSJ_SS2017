@@ -66,3 +66,30 @@ fit6b <- sampling(model6b,datastan)
 fit6b
 
 
+##  パイの実力
+dat <- read.csv("Kraepelin2.csv",fileEncoding = "UTF-8")
+summary(dat)
+library(ggplot2)
+g <- ggplot(dat,aes(x=total,group=group,fill=group))+geom_density(alpha=0.7)
+g
+
+# データの分割
+CTRL <- subset(dat,dat$group=="Control")
+GUM <- subset(dat,dat$group=="Gum")
+PAI <- subset(dat,dat$group=="Pai")
+
+model7 <- stan_model("model7.stan",model_name="Power of PAI")
+datastan <- list(N1=nrow(CTRL),N2=nrow(GUM),N3=nrow(PAI),Y1=CTRL$total,Y2=GUM$total,Y3=PAI$total,ko=PAI$pai)
+fit7 <- sampling(model7,datastan)
+print(fit7,pars=c("mu","sig1","sig2","sig3","gum","pai"))
+
+
+### パイの実回帰分析
+model7b <- stan_model("model7b.stan",model_name="Power of PAI / only PAI group")
+datastan <- list(N3=nrow(PAI),Y3=PAI$total,ko=PAI$pai)
+fit7b <- sampling(model7b,datastan,iter=10000,thin=2)
+print(fit7b)
+
+summary(lm(total~pai,data=PAI))
+
+
