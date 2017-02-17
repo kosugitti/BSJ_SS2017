@@ -81,13 +81,13 @@ plot(x,y,xlim=c(-10,10),ylim=c(-10,10))
 plot(x,y,main="Title",xlab="X axis",ylab="Y axis")
 
 # もう一度野球のデータを例にしましょう
-baseball2016 <- read.csv("baseball2016.csv",
+baseball <- read.csv("baseball.csv",
                          fileEncoding="UTF8",
                          na.strings="*")
 
 # ggplot2パッケージが超おすすめ
 library(ggplot2)
-g <- ggplot(baseball2016,aes(x=height,y=weight))
+g <- ggplot(baseball,aes(x=height,y=weight))
 g <- g + geom_point()
 g
 
@@ -96,7 +96,7 @@ g
 old = theme_set(theme_gray(base_family="HiraKakuProN-W3"))
 
 # 色分け情報追加
-g <- ggplot(baseball2016,aes(x=height,y=weight,color=team))
+g <- ggplot(baseball,aes(x=height,y=weight,color=team))
 g <- g + geom_point()
 g
 
@@ -105,7 +105,7 @@ g <- g + facet_wrap(~position)
 g
 
 # 色分けとかき分け
-g <- ggplot(baseball2016,aes(x=HR,y=pay,color=position))
+g <- ggplot(baseball,aes(x=HR,y=pay,color=position))
 g <- g + geom_point()
 g <- g + facet_wrap(~team)
 g
@@ -113,17 +113,17 @@ g
 
 
 # ヒストグラム（y軸情報はない)
-g <- ggplot(baseball2016,aes(x=pay)) + geom_histogram(binwidth = 500)
+g <- ggplot(baseball,aes(x=pay)) + geom_histogram(binwidth = 500)
 g
 
 # グループごとのヒストグラム
-g <- ggplot(baseball2016,aes(x=pay,fill=team))
+g <- ggplot(baseball,aes(x=pay,fill=team))
 g <- g + geom_histogram(binwidth=500)
 g <- g + facet_wrap(~team)
 g
 
 # 密度にする
-g <- ggplot(baseball2016,aes(x=pay,y=..density..,fill=team))
+g <- ggplot(baseball,aes(x=pay,y=..density..,fill=team))
 g <- g + geom_histogram(binwidth=500,alpha=0.5,position="identity")
 g <- g + geom_density(alpha=0.5)
 g <- g + facet_wrap(~team)
@@ -131,11 +131,11 @@ g
 
 
 # 横軸がカテゴリカル
-g <- ggplot(baseball2016,aes(x=team,y=pay,fill=team))
+g <- ggplot(baseball,aes(x=team,y=pay,fill=team))
 g <- g + geom_boxplot()
 g
 
 # バイオリンプロット(分布がイメージしやすい)
-g <- ggplot(baseball2016,aes(x=team,y=pay,fill=team))
+g <- ggplot(baseball,aes(x=team,y=pay,fill=team))
 g <- g + geom_violin()
 g

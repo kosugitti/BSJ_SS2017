@@ -69,43 +69,43 @@ BSJ.list <- list(
 
 
 # 外部ファイルの読み込み
-baseball2016 <- read.csv("baseball2016.csv",
+baseball <- read.csv("baseball.csv",
                          fileEncoding="UTF8",
                          na.strings="*")
-summary(baseball2016)
-str(baseball2016)
+summary(baseball)
+str(baseball)
 
 # データの一部を抜き出す
 
-subSet1 <- baseball2016[baseball2016$height>180,]
+subSet1 <- baseball[baseball$height>180,]
 
-subSet2 <- subset(baseball2016,baseball2016$weight>100)
+subSet2 <- subset(baseball,baseball$weight>100)
 
-subSet3 <- subset(baseball2016,select=c("height","weight"))
+subSet3 <- subset(baseball,select=c("height","weight"))
 
-subSet4 <- baseball2016[baseball2016$height>180,c("height","weight")]
+subSet4 <- baseball[baseball$height>180,c("height","weight")]
 
 
 
 # データから新しく変数を作り出す
 
-baseball2016$ID <- 1:nrow(baseball2016)
+baseball$ID <- 1:nrow(baseball)
 
-baseball2016$example <- 1
+baseball$example <- 1
 
 
 # 10年以上プレイしている選手はベテランとする
-baseball2016$type <- ifelse(baseball2016$year>=10,1,2)
-baseball2016$type <- factor(baseball2016$type,labels = c("old stager","young stager"))
+baseball$type <- ifelse(baseball$year>=10,1,2)
+baseball$type <- factor(baseball$type,labels = c("old stager","young stager"))
 
 # セ・リーグとパ・リーグを区別する
-baseball2016$CP <- ifelse(baseball2016$team=="巨人",1,
-                          ifelse(baseball2016$team=="阪神",1,
-                                 ifelse(baseball2016$team=="広島",1,
-                                        ifelse(baseball2016$team=="ヤクルト",1,
-                                               ifelse(baseball2016$team=="中日",1,
-                                                      ifelse(baseball2016$team=="DeNA",1,2))))))
-baseball2016$CP <- factor(baseball2016$CP,labels=c("Central","Pacific"))
+baseball$CP <- ifelse(baseball$team=="巨人",1,
+                          ifelse(baseball$team=="阪神",1,
+                                 ifelse(baseball$team=="広島",1,
+                                        ifelse(baseball$team=="ヤクルト",1,
+                                               ifelse(baseball$team=="中日",1,
+                                                      ifelse(baseball$team=="DeNA",1,2))))))
+baseball$CP <- factor(baseball$CP,labels=c("Central","Pacific"))
 
 
 

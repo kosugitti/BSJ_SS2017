@@ -39,7 +39,7 @@ fit1.2 <- sampling(model1,data=datastan,iter=3000,warmup=1000,chains=2)
 print(fit1.2)
 
 # 実際のデータでやってみる
-baseball <- read.csv("baseball2016.csv",fileEncoding = "utf-8")
+baseball <- read.csv("baseball.csv",fileEncoding = "utf-8")
 datastan <- list(N=nrow(baseball),Y=baseball$height)
 fit1.3 <- sampling(model1,data=datastan)
 print(fit1.3)
@@ -118,7 +118,7 @@ fit4b <- sampling(model4b,datastan)
 print(fit4b)
 
 # 実際のデータでやってみる
-baseball <- read.csv("baseball2016.csv",fileEncoding = "utf-8")
+baseball <- read.csv("baseball.csv",fileEncoding = "utf-8")
 # セ・パを判別する
 Central <- c("巨人","阪神","広島","ヤクルト","中日","DeNA")
 # match関数で判断させる

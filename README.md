@@ -80,7 +80,31 @@ R，RStudio，rstanパッケージのインストールの方法が書いてあ�
 
 ## 第六講　より発展的なモデリング
 
-+ 第六講　Rのソースコードは[Lesson6.R](Lesson6.R)です。
++ 第六講　Rのソースコード（前半）[Lesson6.R](Lesson6.R)です。
++ モデルコード 階層線形モデル1；切片が異なるモデル[model8.stan](model8.stan)
++ モデルコード 階層線形モデル2；切片を分布で表すモデル[model8b.stan](model8b.stan)
++ モデルコード 階層線形モデル3；切片と傾きが異なるモデル[model8c.stan](model8c.stan)
++ モデルコード 階層線形モデル4；弱情報事前分布をもたせたモデル[model8d.stan](model8d.stan)
++ モデルコード 階層線形モデル5；パイの実階層モデル[model9.stan](model9.stan)
++ 参考文献；[広島ベイズ塾資料；コーシー分布について](http://www.slideshare.net/KojiKosugi/cauchy20150726)
++ 第六講　Rのソースコード（後半）[Lesson7.R](Lesson7.R)です。
++ モデルコード 一般的な回帰分析；正規分布を仮定[model10.stan](model10.stan)
++ モデルコード ロバストな回帰分析；t分布を仮定[model10a.stan](model10a.stan)
++ モデルコード ロバストな回帰分析2；コーシー分布を仮定[model10b.stan](model10b.stan)
++ モデルコード 欠損値の推定；相関係数のモデル[model11.stan](model11.stan)
++ モデルコード 欠損値の推定；回帰分析のモデル[model12.stan](model12.stan)
++ モデルコード 状態空間モデル；[model13.stan](model13.stan)
++ モデルコード 状態空間モデル2；[model13b.stan](model13b.stan)
+
+## 参考文献リスト
+
++ [基礎からのベイズ統計学: ハミルトニアンモンテカルロ法による実践的入門](http://amzn.to/2kPUcs6)
++ [はじめての 統計データ分析 ―ベイズ的〈ポストp値時代〉の統計学](http://amzn.to/2loRNs3)
++ [実践 ベイズモデリング -解析技法と認知モデル- ](http://amzn.to/2kEORmB)
++ [StanとRでベイズ統計モデリング (Wonderful R)](http://amzn.to/2kET7CH)
++ [データ解析のための統計モデリング入門――一般化線形モデル・階層ベイズモデル・MCMC(確率と情報の科学)](http://amzn.to/2lRW5sr)
++ []
+
 
 
 

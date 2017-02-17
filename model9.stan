@@ -52,3 +52,4 @@ model{
   sig~cauchy(0,5);
   theta_sd ~ cauchy(0,5);
 }
+
