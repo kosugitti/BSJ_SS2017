@@ -77,13 +77,13 @@ str(baseball)
 
 # データの一部を抜き出す
 
-subSet1 <- baseball[baseball$height>180,]
+Takai <- baseball[baseball$height>180,]
 
-subSet2 <- subset(baseball,baseball$weight>100)
+Futoi <- subset(baseball,baseball$weight>100)
 
-subSet3 <- subset(baseball,select=c("height","weight"))
+baseball2 <- subset(baseball,select=c("height","weight"))
 
-subSet4 <- baseball[baseball$height>180,c("height","weight")]
+baseball3 <- baseball[baseball$height>180,c("height","weight")]
 
 
 
