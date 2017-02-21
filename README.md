@@ -37,7 +37,7 @@ R，RStudio，rstanパッケージのインストールの方法が書いてあ�
 
 ## 資料
 
-投影資料は[こちらからダウンロードできます](https://www.dropbox.com/s/3bes5v4vwm5tsfp/BSJ_SS2017.pdf?dl=0)。
+投影資料は[こちらからダウンロードできます]。
 
 ## 第一講　環境の準備
 

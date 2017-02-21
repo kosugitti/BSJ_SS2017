@@ -52,6 +52,7 @@ N <- 2000
 mu <- c(50,60)
 sd <- c(10,10)
 rho <- 0.7
+Sig <- matrix(nrow=2,ncol=2)
 Sig[1,1] <- sd[1]*sd[1]
 Sig[1,2] <- sd[1]*sd[2]*rho
 Sig[2,1] <- sd[2]*sd[1]*rho
