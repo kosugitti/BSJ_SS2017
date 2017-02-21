@@ -43,7 +43,7 @@ schools_dat <- list(J = 8,
                     sigma = c(15, 10, 16, 11,  9, 11, 10, 18))
 fit <- stan(file = '8schools.stan', data = schools_dat, 
             iter = 1000, chains = 4)
-
+print(fit)
 
 print(fit,pars="mu")
 stan_trace(fit,pars="mu")
