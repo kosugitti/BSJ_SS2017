@@ -34,6 +34,17 @@ g
 mean(x)
 sd(x)
 
+# likelihood
+g <- ggplot(data=data.frame(X=c(150,200)), aes(x=X))
+g <- g + stat_function(fun=dnorm, args=list(mean=190, sd=10),color=4)
+g <- g + stat_function(fun=dnorm, args=list(mean=170, sd=10),color=2)
+g
+
+dnorm(165,170,10)*dnorm(173,170,10)*dnorm(182,170,10)
+dnorm(165,190,10)*dnorm(173,190,10)*dnorm(182,190,10)
+
+
+
 ## 公式サンプル8schoolを実行してみよう
 library(rstan)
 rstan_options(auto_write = TRUE)

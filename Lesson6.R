@@ -93,7 +93,7 @@ fit8d <- sampling(model8d,datastan,iter=5000,thin=2)
 fit8d
 
 # 実データでやってみる
-baseball <- read.csv("baseball2016.csv",fileEncoding="UTF8")
+baseball <- read.csv("baseball.csv",fileEncoding="UTF8")
 # データの年収は1000万円単位にしている
 datastan <- list(K=12,L=nrow(baseball),teamID=as.numeric(baseball$team),X=baseball$Hit,Y=baseball$pay/1000)
 fit8d.ball <- sampling(model8d,datastan,iter=5000)
