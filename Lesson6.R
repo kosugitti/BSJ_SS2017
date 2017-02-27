@@ -36,6 +36,14 @@ datastan <- list(K=K,L=nrow(dat),teamID=dat$team,X=dat$X,Y=dat$Y)
 fit8 <- sampling(model8,datastan)
 fit8
 
+# 実データでやってみる
+baseball <- read.csv("baseball.csv", fileEncoding="UTF8",na.strings="*")
+datastan <- list(K=12,L=nrow(baseball),teamID=as.numeric(baseball$team),
+                 X=baseball$Hit,Y=baseball$pay)
+fit8 <- sampling(model8,datastan)
+fit8
+
+
 ### 
 # チームの平均年俸が分布する
 base0 <- 1000
@@ -59,6 +67,10 @@ datastan <- list(K=K,L=nrow(dat),teamID=dat$team,X=dat$X,Y=dat$Y)
 fit8b <- sampling(model8b,datastan,iter=5000,thin=2)
 fit8b
 
+datastan <- list(K=12,L=nrow(baseball),teamID=as.numeric(baseball$team),
+                 X=baseball$Hit,Y=baseball$pay)
+fit8b <- sampling(model8b,datastan,iter=5000,thin=2)
+fit8b
 
 
 
@@ -95,9 +107,12 @@ fit8d
 # 実データでやってみる
 baseball <- read.csv("baseball.csv",fileEncoding="UTF8")
 # データの年収は1000万円単位にしている
-datastan <- list(K=12,L=nrow(baseball),teamID=as.numeric(baseball$team),X=baseball$Hit,Y=baseball$pay/1000)
-fit8d.ball <- sampling(model8d,datastan,iter=5000)
+datastan <- list(K=12,L=nrow(baseball),teamID=as.numeric(baseball$team),
+                 X=baseball$Hit,Y=baseball$pay/1000)
+fit8d.ball <- sampling(model8d,datastan,iter=5000,thin=2)
 fit8d.ball
+
+
 
 
 ### 添え字ごとの階層

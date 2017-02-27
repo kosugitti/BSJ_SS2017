@@ -83,6 +83,9 @@ datastan <- list(N1=nrow(CTRL),N2=nrow(GUM),N3=nrow(PAI),Y1=CTRL$total,Y2=GUM$to
 fit7 <- sampling(model7,datastan)
 print(fit7,pars=c("mu","sig1","sig2","sig3","gum","pai"))
 
+# shinystan
+library(shinystan)
+launch_shinystan(fit7)
 
 ### パイの実回帰分析
 model7b <- stan_model("model7b.stan",model_name="Power of PAI / only PAI group")
